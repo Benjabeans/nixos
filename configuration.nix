@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, username, ... }:
 
 {
 
@@ -124,9 +124,9 @@
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.benjabeans = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "Benjabeans";
+    description = username;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;

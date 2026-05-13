@@ -40,12 +40,15 @@
 
 
   outputs = inputs@{ self, nixpkgs, home-manager, qylock, nvim-config, caelestia-shell,... }:
+  let
+    username = "benjabeans";
+  in
   {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       specialArgs = {
-        inherit qylock;
+        inherit qylock username;
       };
 
       modules = [
@@ -57,10 +60,10 @@
           home-manager.useUserPackages = true;
 
 	  home-manager.extraSpecialArgs = {
-  	    inherit inputs nvim-config;
+  	    inherit inputs nvim-config username;
  	  };
 
-          home-manager.users.benjabeans ={
+          home-manager.users.${username} ={
             imports = [
 	       caelestia-shell.homeManagerModules.default
               ./home.nix
@@ -71,6 +74,3 @@
     };
   };
 }
-
-
-

@@ -1,9 +1,10 @@
-{ pkgs, inputs, nvim-config, lib, ... }:
+{ pkgs, inputs, nvim-config, lib, username, ... }:
 
 let
 
 
   system = pkgs.stdenv.hostPlatform.system;
+  homeDirectory = "/home/${username}";
   caelestiaCli = inputs.caelestia-shell.inputs.caelestia-cli.packages.${system}.default;
 
 
@@ -97,8 +98,8 @@ let
   '';
 in
 {
-  home.username = "benjabeans";
-  home.homeDirectory = "/home/benjabeans";
+  home.username = username;
+  home.homeDirectory = homeDirectory;
 
   # Use your current NixOS release version.
   # Do not randomly bump this later.
@@ -177,7 +178,7 @@ in
     };
 
     extraConfig = ''
-      include /home/benjabeans/.local/state/caelestia/theme/kitty.conf
+      include ${homeDirectory}/.local/state/caelestia/theme/kitty.conf
     '';
 
     settings = {

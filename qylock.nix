@@ -75,7 +75,7 @@ in
 # Quickshell lockscreen + runtime deps
   environment.systemPackages = with pkgs; [
     qylockClockworkOrbitalTheme
-    qylockLockscreen
+    # qylockLockscreen
 
     quickshell
     psmisc # killall
