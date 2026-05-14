@@ -140,6 +140,8 @@ in
     pyright
     arduino-cli
 
+    nautilus
+
     #zen browser
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
@@ -164,6 +166,19 @@ in
     VISUAL = "nvim";
     SUDO_EDITOR = "nvim";
   };
+
+  services.udiskie = {
+      enable = true;
+      settings = {
+          # workaround for
+          # https://github.com/nix-community/home-manager/issues/632
+          program_options = {
+              # replace with your favorite file manager
+              file_manager = "${pkgs.nautilus}";
+          };
+      };
+  };
+
 
   fonts.fontconfig.enable = true;
 

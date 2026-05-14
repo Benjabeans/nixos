@@ -117,9 +117,19 @@
     variant = "";
   };
 
+  
+
 
   #hyprland
   programs.hyprland.enable = true; # enable Hyprland
+
+
+  #USB utilities
+  services.udisks2.enable = true;
+
+  #gnome virtual file system for Nautilus 
+  services.gvfs.enable = true;
+
 
 
 
