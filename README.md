@@ -3,7 +3,7 @@ Configuration files for my nixOS. [In-Progess]
 **Themeing**
 
 
-Currently rice -> caelestia shell: https://github.com/caelestia-dots/shell 
+Current rice -> caelestia shell: https://github.com/caelestia-dots/shell 
 
 Current sddm theme -> qylock : https://github.com/Darkkal44/qylock
 
