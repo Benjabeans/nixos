@@ -146,7 +146,8 @@ in
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
 
-
+    # Spat lab software
+    (puredata-with-plugins [zexy])
 
   ];
 
@@ -320,7 +321,8 @@ in
     extraConfig = ''
       $terminal = kitty
       $editor = kitty nvim
-      $browser = zen-browser
+      $browser = zen
+      $file_explorer = nautilus
 
       # Caelestia shell global shortcuts.
       exec = hyprctl dispatch submap global
@@ -392,7 +394,7 @@ in
       bind = $mod, F, exec, $browser
       bind = CTRL SHIFT, Escape, exec, kitty btop
       # Dolphin is not installed in this config:
-      # bind = $mod, E, exec, dolphin
+      bind = $mod, E, exec, $file_explorer
 
       # Rofi entries that work with the installed rofi package.
       bind = $mod, Tab, exec, pkill -x rofi || rofi -show window
@@ -509,4 +511,5 @@ in
   xdg.configFile."caelestia/templates/kitty.conf".text = caelestiaKittyTheme;
 
   programs.home-manager.enable = true;
+
 }
